@@ -60,18 +60,19 @@ class Bus
   end
   
   def nach_oben_fahren(wdh,wdh_nach,starten_nach)
-    bewegen(0,1, wdh,wdh_nach,starten_nach)
+    bewegen(0,-1, wdh,wdh_nach,starten_nach)
   end
  
   def einparken (x_links, x_rechts, y)
     # bewegt in x-Richtung 
-    bewegen((x_rechts+x_links)/2 - breite/2 - position.x, 0, 1,0,0)
-    # beweg in y-Richtung 
-    bewegen(0, y - position.y, 1,0,1000)
+    delta_x = (x_rechts + x_links)/2 - position.x + breite/2
+    nach_vorne_fahren(delta_x,10,0)
+    # beweg in y-Richtung
+    nach_oben_fahren((y - position.y).abs,10,10*delta_x + 50)
   end 
   
   def ausparken (fahrlinie)
-    bewegen(0, fahrlinie - position.y, 1,0,0)
+    nach_unten_fahren((fahrlinie - position.y).abs,10,0)
   end
   
   def abdunkeln

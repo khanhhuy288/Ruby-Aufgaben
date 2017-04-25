@@ -5,21 +5,25 @@ require 'Bus'
 
 class StrassenSzene
   def initialize
-    @strasse = Strasse.new(0, 200, 800, 200)
+    @strasse = Strasse.new(0, 500, 800, 200)
     @laterne1 = StrassenLaterne.new
-    @laterne1.auf_position_setzen(20, 200)
+    @laterne1.auf_position_setzen(@strasse.links + 20, @strasse.oben)
     @laterne2 = StrassenLaterne.new
-    @laterne2.auf_position_setzen(250, 200)
+    @laterne2.auf_position_setzen(@strasse.links + 250, @strasse.oben)
     @laterne3 = StrassenLaterne.new
-    @laterne3.auf_position_setzen(480, 200)
+    @laterne3.auf_position_setzen(@strasse.links + 480, @strasse.oben)
     @laterne4 = StrassenLaterne.new
-    @laterne4.auf_position_setzen(710, 200)
+    @laterne4.auf_position_setzen(@strasse.links + 710, @strasse.oben)
     @bus1 = Bus.new
-    @bus1.auf_position_setzen(30, 285)
+    @bus1.auf_position_setzen(@strasse.links + 30, fahrlinie)
     @bus2 = Bus.new
-    @bus2.auf_position_setzen(280, 285)
+    @bus2.auf_position_setzen(@strasse.links + 280, fahrlinie)
     @bus3 = Bus.new
-    @bus3.auf_position_setzen(460, 285)
+    @bus3.auf_position_setzen(@strasse.links + 460, fahrlinie)
+  end
+  
+  def fahrlinie
+    @strasse.oben + @strasse.breite/3 + @strasse.breite/7
   end
   
   def sichtbar_machen
@@ -56,15 +60,15 @@ class StrassenSzene
   end
 
   def einparken
-    @bus1.einparken(@laterne1.rechts, @laterne2.links, 200)
-    @bus2.einparken(@laterne2.rechts, @laterne3.links, 200)
-    @bus3.einparken(@laterne3.rechts, @laterne4.links, 200)
+    @bus1.einparken(@laterne1.rechts, @laterne2.links, @strasse.oben)
+    @bus2.einparken(@laterne2.rechts, @laterne3.links, @strasse.oben)
+    @bus3.einparken(@laterne3.rechts, @laterne4.links, @strasse.oben)
   end
 
   def ausparken
-    @bus1.ausparken(285)
-    @bus2.ausparken(285)
-    @bus3.ausparken(285)
+    @bus1.ausparken(fahrlinie)
+    @bus2.ausparken(fahrlinie)
+    @bus3.ausparken(fahrlinie)
   end
 
   def clear

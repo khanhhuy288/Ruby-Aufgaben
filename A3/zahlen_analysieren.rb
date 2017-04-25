@@ -1,37 +1,13 @@
 def dezimal_ziffer?(char)
-  # store char as int
-  num = char.to_i
-  # make sure char is an int and is in range
-  if num.to_s == char
-    (0..9).include?(num)
-  else
-    false
-  end
+  ('0'..'9').include?(char)
 end
 
 def oktal_ziffer?(char)
-  # store char to int
-  num = char.to_i
-  # make sure char is an int and is in range
-  if num.to_s == char
-    (0..7).include?(num)
-  else
-    false
-  end
+  ('0'..'7').include?(char)
 end
 
 def hexadezimal_ziffer?(char)
-  # store char as int
-  num = char.to_i
-  # make sure char is an int and is in range
-  if num.to_s == char
-    (0..9).include?(num)
-  else
-    # convert alpha to ascii
-    ascii = char.upcase.ord
-    # make sure ascii is in range
-    ('A'.ord..'F'.ord).include?(ascii)
-  end
+  ('0'..'9').include?(char) || ('A'..'F').include?(char)
 end
 
 def dezimal?(string)
@@ -61,7 +37,7 @@ def hexadezimal?(string)
   return false unless string[0..1] == '0x'
   # make sure remaining char is hexadecimal
   string[2..string.length-1].each_char {|c|
-    return false unless hexadezimal_ziffer?(c)
+    return false unless hexadezimal_ziffer?(c.upcase)
   }
   # succeed
   true
@@ -73,8 +49,8 @@ def start_analysis
     puts 'Geben Sie eine Zahl in Dezimal- / Oktal- und Hexadezimaldarstellung ein'
     input = gets.chomp
     # remove leading/trailing spaces and upcase input
-    command = input.strip.upcase
-    if command == 'EXIT'
+    command = input.strip.downcase
+    if command == 'exit'
       puts 'Bis zum nächsten Mal'
       exit
     elsif dezimal?(input)

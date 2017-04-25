@@ -5,8 +5,9 @@ def kreuz(n, chars)
   else
     # print pattern
     spaces_num = (n - 1) / 2
-    vertical  =  ' ' * spaces_num * chars.length + chars + ' ' * spaces_num * chars.length
+    vertical  =  ' ' * spaces_num * chars.length + chars
     horizontal = chars * n
+    
     # print upper lines vertical
     spaces_num.times { puts vertical }
     # print horizontal line
@@ -48,15 +49,13 @@ def dreieck3(n, chars)
   else
     # print pattern
     spaces_num = (n - 1) / 2
-    puts ' ' * spaces_num * chars.length + chars + ' ' * spaces_num * chars.length      # first line
+    puts ' ' * spaces_num * chars.length + chars      # first line
 
     (spaces_num - 1).downto(1) { |i|
       print ' ' * i * chars.length                    # left spaces
       print chars                                     # left side
       print ' ' * (n - (i + 1)*2) * chars.length      # inside
-      print chars                                     # right side
-      print ' ' * i * chars.length                    # right spaces
-      puts                                            # newline
+      puts chars                                      # right side
     }
 
     puts chars * n          # last line

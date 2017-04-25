@@ -39,14 +39,10 @@ while true
 
     # match patterns
     case option
-      when 1
-        kreuz(num, pattern)
-      when 2
-        dreieck1(num, pattern)
-      when 3
-        dreieck2(num, pattern)
-      else
-        dreieck3(num, pattern)
+      when 1 then kreuz(num, pattern)
+      when 2 then dreieck1(num, pattern)
+      when 3 then dreieck2(num, pattern)
+      else dreieck3(num, pattern)
     end
   end
 
