@@ -18,9 +18,8 @@ class Set
 
   # anolog to ==
   def eql?(other)
-    return false if other.nil?
-    return true if self.equal?(other)
-    self.all?{|e| other.include?(e)}
+    # use the overwriten method ==(other)
+    self == eql?(other)
   end
 
   # set a hash
@@ -36,10 +35,15 @@ class Set
     return 'Set{}' if size == 0
 
     # map elements from set to an array
-    r = "Set{#{self.map{|x| x }}}"
-    # delete [ and ]
-    r.delete!('[]')
-    r
+    set = "Set{#{self.map{|x| x }}}"
+
+    # r = r.chars
+    # r.delete_at(4)
+    # r.delete_at(-2)
+    # r.join
+
+    # remove square brackets at index 4 and -2
+    set.tap { |s| s[4] = ''; s[-2] = '' }
   end
 end
 
@@ -76,6 +80,4 @@ end
 
 p = Potenzmenge.new(Set.new([1,2,3,4]))
 
-set_a = Set.new([5, 2, 9])
-set_b = Set.new([5, 2, 9, 10])
-
+puts p
