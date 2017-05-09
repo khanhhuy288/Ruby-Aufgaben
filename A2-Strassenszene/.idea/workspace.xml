@@ -14,7 +14,7 @@
     <SUITE FILE_PATH="coverage/A2-Strassenszene@Tupel.coverage" NAME="Tupel Coverage Results" MODIFIED="1494289094725" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A4" MODULE_NAME="A4" />
     <SUITE FILE_PATH="coverage/A2-Strassenszene@Toolbox.coverage" NAME="Toolbox Coverage Results" MODIFIED="1493148447407" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="A2-Strassenszene" />
     <SUITE FILE_PATH="coverage/A2-Strassenszene@test.coverage" NAME="test Coverage Results" MODIFIED="1494199060299" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A3" MODULE_NAME="A3" />
-    <SUITE FILE_PATH="coverage/A2-Strassenszene@RelationenGenerator.coverage" NAME="RelationenGenerator Coverage Results" MODIFIED="1494307413504" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A4" MODULE_NAME="A4" />
+    <SUITE FILE_PATH="coverage/A2-Strassenszene@RelationenGenerator.coverage" NAME="RelationenGenerator Coverage Results" MODIFIED="1494344792651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A4" MODULE_NAME="A4" />
     <SUITE FILE_PATH="coverage/A2-Strassenszene@musterfabrik.coverage" NAME="musterfabrik Coverage Results" MODIFIED="1493152616254" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A3" MODULE_NAME="A3" />
     <SUITE FILE_PATH="coverage/A2-Strassenszene@muster_ausgeben.coverage" NAME="muster_ausgeben Coverage Results" MODIFIED="1493826549115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A3" MODULE_NAME="A3" />
     <SUITE FILE_PATH="coverage/A2-Strassenszene@PotenzMenge.coverage" NAME="PotenzMenge Coverage Results" MODIFIED="1494307619445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/../A4" MODULE_NAME="A4" />
@@ -30,21 +30,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="musterfabrik.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../A3/musterfabrik.rb">
+      <file leaf-file-name="RelationenGenerator.rb" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../A4/RelationenGenerator.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="102">
+              <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RelationenGenerator.rb" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../A4/RelationenGenerator.rb">
+      <file leaf-file-name="Relation.rb" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../A4/Relation.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+            <state relative-caret-position="204">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -53,18 +53,8 @@
       <file leaf-file-name="PotenzMenge.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../A4/PotenzMenge.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="448">
-              <caret line="74" column="2" lean-forward="true" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Relation.rb" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../A4/Relation.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+            <state relative-caret-position="85">
+              <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -73,8 +63,8 @@
       <file leaf-file-name="Tupel.rb" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../A4/Tupel.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+            <state relative-caret-position="255">
+              <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -84,7 +74,7 @@
         <entry file="file://$PROJECT_DIR$/../A4/RelationenTest.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+              <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -110,15 +100,15 @@
         <option value="$PROJECT_DIR$/StrassenSzene.rb" />
         <option value="$PROJECT_DIR$/../A3/zahlen_analysieren.rb" />
         <option value="$PROJECT_DIR$/../A3/musterfabrik.rb" />
-        <option value="$PROJECT_DIR$/../A3/wuerfeln.rb" />
         <option value="$PROJECT_DIR$/../A3/muster_ausgeben.rb" />
         <option value="$PROJECT_DIR$/../A3/test.rb" />
         <option value="$PROJECT_DIR$/../A4/test.rb" />
-        <option value="$PROJECT_DIR$/../A4/Tupel.rb" />
         <option value="$PROJECT_DIR$/../A4/RelationenTest.rb" />
         <option value="$PROJECT_DIR$/../A4/PotenzMenge.rb" />
-        <option value="$PROJECT_DIR$/../A4/RelationenGenerator.rb" />
+        <option value="$PROJECT_DIR$/../A4/Tupel.rb" />
         <option value="$PROJECT_DIR$/../A4/Relation.rb" />
+        <option value="$PROJECT_DIR$/../A4/RelationenGenerator.rb" />
+        <option value="$PROJECT_DIR$/../A3/wuerfeln.rb" />
       </list>
     </option>
   </component>
@@ -171,7 +161,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -184,9 +173,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A2-Strassenszene" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="A3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -197,12 +197,15 @@
     <property name="js.eslint.eslintPackage" value="" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Huy Dau Buoi\Desktop\HAW Stuff\PM1-PM\AL Labor\A3" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Huy Dau Buoi\Desktop\HAW Stuff\PM1-PM\AL Labor\A4" />
       <recent name="C:\Users\Huy Dau Buoi\Desktop\HAW Stuff\PM1-PM\AL Labor\A3" />
     </key>
   </component>
-  <component name="RunManager" selected="Ruby.PotenzMenge">
+  <component name="RunManager" selected="Ruby.RelationenGenerator">
     <configuration default="false" name="PotenzMenge" type="RubyRunConfigurationType" factoryName="Ruby" temporary="true">
       <module name="A4" />
       <RUBY_RUN_CONFIG NAME="RUBY_ARGS" VALUE="-e $stdout.sync=true;$stderr.sync=true;load($0=ARGV.shift)" />
@@ -417,11 +420,11 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.PotenzMenge" />
-        <item index="1" class="java.lang.String" itemvalue="Ruby.RelationenGenerator" />
-        <item index="2" class="java.lang.String" itemvalue="Ruby.Tupel" />
-        <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'RelationenTest': A4" />
-        <item index="4" class="java.lang.String" itemvalue="Ruby.test (2)" />
+        <item index="0" class="java.lang.String" itemvalue="Ruby.RelationenGenerator" />
+        <item index="1" class="java.lang.String" itemvalue="Ruby.Tupel" />
+        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'RelationenTest': A4" />
+        <item index="3" class="java.lang.String" itemvalue="Ruby.test (2)" />
+        <item index="4" class="java.lang.String" itemvalue="Ruby.PotenzMenge" />
       </list>
     </recent_temporary>
   </component>
@@ -450,6 +453,7 @@
       <workItem from="1494182822584" duration="14223000" />
       <workItem from="1494270804709" duration="11207000" />
       <workItem from="1494304611197" duration="4514000" />
+      <workItem from="1494340646177" duration="4339000" />
     </task>
     <servers />
   </component>
@@ -465,13 +469,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50798000" />
+    <option name="totallyTimeSpent" value="55137000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28895614" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2934947" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -506,6 +510,54 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../A3/musterfabrik.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/RelationenGenerator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/PotenzMenge.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1258">
+          <caret line="74" column="2" lean-forward="true" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/Relation.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/Tupel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/RelationenTest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/../A3/musterfabrik.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -684,13 +736,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../A3/wuerfeln.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="17" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../A3/muster_ausgeben.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
@@ -708,30 +753,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../A4/test.rb" />
-    <entry file="file://$PROJECT_DIR$/../A3/musterfabrik.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../A4/RelationenTest.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="20" lean-forward="true" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../A4/Tupel.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://C:/Ruby200-x64/lib/ruby/2.0.0/set.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="87">
@@ -740,26 +761,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../A4/RelationenGenerator.rb">
+    <entry file="file://$PROJECT_DIR$/../A3/musterfabrik.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+        <state relative-caret-position="17">
+          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/RelationenTest.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/Tupel.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="30" lean-forward="true" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../A4/PotenzMenge.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="448">
-          <caret line="74" column="2" lean-forward="true" selection-start-line="74" selection-start-column="2" selection-end-line="74" selection-end-column="2" />
+        <state relative-caret-position="85">
+          <caret line="5" column="9" lean-forward="true" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../A4/Relation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="18" column="19" lean-forward="true" selection-start-line="18" selection-start-column="19" selection-end-line="18" selection-end-column="19" />
+        <state relative-caret-position="204">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A3/wuerfeln.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="23" column="12" lean-forward="true" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../A4/RelationenGenerator.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="54" column="42" lean-forward="true" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
           <folding />
         </state>
       </provider>
