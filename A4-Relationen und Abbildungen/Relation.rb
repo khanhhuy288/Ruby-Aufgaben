@@ -37,19 +37,39 @@ class Relation
     @relation.each(&block)
   end
 
+  #=========== R ⊆ A x A ===========
+  # für alle a ϵ set_a, (a,a) ϵ R
   def reflexiv?
+    return false if @set_a != @set_b
+    @set_a.all? { |element| @relation.include?(Tupel.new(element,element))}
   end
 
+  # (a,b) ϵ R => (b,a) ϵ R
   def symmetrisch?
+    return false if @set_a != @set_b
+    @relation.all? { |tupel| @relation.include?(Tupel.new(tupel.b,tupel.a))}
   end
 
+  # (a,b) ϵ R => (b,a) (not ϵ) R
   def asymmetrisch?
+    return false if @set_a != @set_b
+    @relation.all? { |tupel| not @relation.include?(Tupel.new(tupel.b,tupel.a))}
   end
 
+  # (a,b) ϵ R und (b,a) ϵ R => a = b
   def anti_symmetrisch?
+    # für alle (a,b) ϵ R muss es kein (b,a) geben, sonst muss a == b sein
+    @relation.all? {|tupel| (not @relation.include?(Tupel.new(tupel.b,tupel.a))) || (tupel.a == tupel.b) }
   end
 
+  # (a,b) ϵ R und (b,c) ϵ R => (a,c) ϵ R
   def transitiv?
+    # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != b2 sein, sonst muss a1 == b2 sein
+    @relation.all? {|tupel_1|
+      @relation.all? {|tupel_2|
+        (not tupel_1.b == tupel_2.a) || include?(Tupel.new(tupel_1.a,tupel_2.b))
+      }
+    }
   end
 
   def rechts_eindeutig?
@@ -64,6 +84,8 @@ class Relation
   def links_total?
   end
 
+  def verknuepfe
+  end
 
   def to_s
     # return empty Relation when Relation's size equal 0

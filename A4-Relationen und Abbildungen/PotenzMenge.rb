@@ -12,6 +12,9 @@ class Set
     # return true if compared to the object itself
     return true if self.equal?(other)
 
+    # return false if other's not Set
+    return false if self.class != other.class
+
     # return true if current set is Teilmenge von other set
     self.all?{|e| other.include?(e)}
   end
@@ -19,7 +22,7 @@ class Set
   # anolog to ==
   def eql?(other)
     # use the overwriten method ==(other)
-    self == eql?(other)
+    self == other
   end
 
   # set a hash
