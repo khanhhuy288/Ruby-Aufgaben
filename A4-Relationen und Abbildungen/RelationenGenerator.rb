@@ -7,10 +7,7 @@ class RelationenGenerator
 
     # return empty Relation if k is not valid (k > max_tupels)
     max_tupels = set_a.size * set_b.size
-    if k > max_tupels
-      puts 'k muss <= maximale Anzahl der Tupels sein.'
-      return relation
-    end
+    raise 'k muss <= maximale Anzahl der Tupels sein.' if k > max_tupels
 
     # add k Tupels to Relation
     while relation.size < k
@@ -58,8 +55,8 @@ my_tupel5 = Tupel.new(4,8)
 my_relation = Relation.new(set_a, set_a)
 my_relation.add(Tupel.new(4,7))
 my_relation.add(Tupel.new(7,8))
-my_relation.add(Tupel.new(4,8))
-my_relation.add(Tupel.new(4,5))
+my_relation.add(Tupel.new(5,5))
+# my_relation.add(Tupel.new(4,5))
 
 # new_relation = RelationenGenerator.generiere_relation(set_a, set_a, 4)
 
@@ -67,9 +64,9 @@ puts my_relation.set_a
 
 puts my_relation
 
-puts my_relation.transitiv?
+puts my_relation.links_eindeutig?
 
-
+puts my_relation.invertiere
 
 
 

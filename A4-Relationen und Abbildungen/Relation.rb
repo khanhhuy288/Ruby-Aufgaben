@@ -38,7 +38,7 @@ class Relation
   end
 
   #=========== R ⊆ A x A ===========
-  # für alle a ϵ set_a, (a,a) ϵ R
+  # für alle a ϵ A, (a,a) ϵ R
   def reflexiv?
     return false if @set_a != @set_b
     @set_a.all? { |element| @relation.include?(Tupel.new(element,element))}
@@ -64,27 +64,76 @@ class Relation
 
   # (a,b) ϵ R und (b,c) ϵ R => (a,c) ϵ R
   def transitiv?
-    # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != b2 sein, sonst muss a1 == b2 sein
+    # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != a2 sein, sonst muss a1 == b2 sein
     @relation.all? {|tupel_1|
       @relation.all? {|tupel_2|
-        (not tupel_1.b == tupel_2.a) || include?(Tupel.new(tupel_1.a,tupel_2.b))
+        (not tupel_1.b == tupel_2.a) || @relation.include?(Tupel.new(tupel_1.a,tupel_2.b))
       }
     }
   end
 
+  #=========== R ⊆ A x B ===========
+  # für alle a ϵ A, (a,b) ϵ R und (a,c) ϵ R => b = c
+  # für alle (a1,b1) und (a2,b2) gibt es NUR EINE a1 == a2
   def rechts_eindeutig?
+    @relation.all? {|tupel_1|
+      @relation.one? {|tupel_2|
+        tupel_1.a == tupel_2.a
+      }
+    }
   end
 
+  # für alle a ϵ A, (b,a) ϵ R und (c,a) ϵ R => b = c
+  # für alle (a1,b1) und (a2,b2) gibt es NUR EINE b1 == b2
   def links_eindeutig?
+    @relation.all? {|tupel_1|
+      @relation.one? {|tupel_2|
+        tupel_1.b == tupel_2.b
+      }
+    }
   end
 
+  # für alle b ϵ B, existiert a ϵ A mit (a,b) ϵ R
   def rechts_total?
+    return true if @relation.size == 0
+    @set_b.all? {|element|
+      @relation.any? {|tupel| tupel.b == element}
+    }
   end
 
+  # für alle a ϵ A, existiert b ϵ B mit (a,b) ϵ R
   def links_total?
+    return true if @relation.size == 0
+    set_a.all? {|element|
+      @relation.any? {|tupel| tupel.a == element}
+    }
   end
 
-  def verknuepfe
+  def verknuepfe(andere_relation)
+    raise 'Parameter ist keine Relation.' unless andere_relation.kind_of?(Relation)
+    raise 'Mengen lassen sich nicht verknüpfen.' unless @relation.set_b == andere_relation.set_a
+    new_relation = Relation.new(@relation.set_a, andere_relation.set_b)
+
+    # add new Tupel when b ϵ tupel_1's Zielmenge == a ϵ tupel_2's Ausgangmenge
+    @relation.each { |tupel_1|
+      andere_relation.each { |tupel_2|
+        if tupel_1.b == tupel_2.a
+          new_relation.add(Tupel.new(tupel_1.a, tupel_2.b))
+        end
+      }
+    }
+    new_relation
+  end
+
+  def invertiere
+    # create new Relation from set_b to set_a
+    new_relation = Relation.new(set_b, set_a)
+
+    # add Tupel from current Relation to new Relation, a and b of Tupel switch places
+    @relation.each { |tupel|
+      new_relation.add(Tupel.new(tupel.b,tupel.a))
+    }
+    new_relation
   end
 
   def to_s
