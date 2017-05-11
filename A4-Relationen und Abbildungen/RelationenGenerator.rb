@@ -36,37 +36,25 @@ class RelationenGenerator
 end
 
 
-set_a = Set.new([4, 7, 8, 9, 5])
-set_b = Set.new([5, 7, 8, 9])
-set_c = Set.new([4, 7, 8])
+set_a = Set.new([1, 2, 3])
+set_b = Set.new([1, 3, 4])
+set_c = Set.new([1, 5, 6, 7])
 set_d = Set.new([1])
 set_e = Set.new([4])
 
-#
-# puts set_a
-# puts set_a == set_c
-
-my_tupel1 = Tupel.new(4,8)
-my_tupel2 = Tupel.new(9,7)
-my_tupel3 = Tupel.new(7,7)
-my_tupel4 = Tupel.new(4,8)
-my_tupel5 = Tupel.new(4,8)
-
 my_relation = Relation.new(set_a, set_a)
-my_relation.add(Tupel.new(4,7))
-my_relation.add(Tupel.new(7,8))
-my_relation.add(Tupel.new(5,5))
-# my_relation.add(Tupel.new(4,5))
+andere_relation = Relation.new(set_b, set_c)
 
-# new_relation = RelationenGenerator.generiere_relation(set_a, set_a, 4)
 
-puts my_relation.set_a
+my_relation.add(Tupel.new(1,2))
+my_relation.add(Tupel.new(2,3))
+my_relation.add(Tupel.new(3,3))
 
 puts my_relation
 
-puts my_relation.links_eindeutig?
+puts my_relation.symmetrischer_abschluss
 
-puts my_relation.invertiere
+
 
 
 

@@ -40,19 +40,16 @@ class Relation
   #=========== R ⊆ A x A ===========
   # für alle a ϵ A, (a,a) ϵ R
   def reflexiv?
-    return false if @set_a != @set_b
     @set_a.all? { |element| @relation.include?(Tupel.new(element,element))}
   end
 
   # (a,b) ϵ R => (b,a) ϵ R
   def symmetrisch?
-    return false if @set_a != @set_b
     @relation.all? { |tupel| @relation.include?(Tupel.new(tupel.b,tupel.a))}
   end
 
   # (a,b) ϵ R => (b,a) (not ϵ) R
   def asymmetrisch?
-    return false if @set_a != @set_b
     @relation.all? { |tupel| not @relation.include?(Tupel.new(tupel.b,tupel.a))}
   end
 
@@ -64,10 +61,10 @@ class Relation
 
   # (a,b) ϵ R und (b,c) ϵ R => (a,c) ϵ R
   def transitiv?
-    # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != a2 sein, sonst muss a1 == b2 sein
+    # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != a2 sein, sonst muss (a1,b2) ϵ R
     @relation.all? {|tupel_1|
       @relation.all? {|tupel_2|
-        (not tupel_1.b == tupel_2.a) || @relation.include?(Tupel.new(tupel_1.a,tupel_2.b))
+        (tupel_1.b != tupel_2.a) || @relation.include?(Tupel.new(tupel_1.a,tupel_2.b))
       }
     }
   end
@@ -111,10 +108,10 @@ class Relation
 
   def verknuepfe(andere_relation)
     raise 'Parameter ist keine Relation.' unless andere_relation.kind_of?(Relation)
-    raise 'Mengen lassen sich nicht verknüpfen.' unless @relation.set_b == andere_relation.set_a
-    new_relation = Relation.new(@relation.set_a, andere_relation.set_b)
+    raise 'Mengen lassen sich nicht verknüpfen.' unless set_b == andere_relation.set_a
+    new_relation = Relation.new(set_a, andere_relation.set_b)
 
-    # add new Tupel when b ϵ tupel_1's Zielmenge == a ϵ tupel_2's Ausgangmenge
+    # add new Tupel when tupel_1's b == tupel_2's a
     @relation.each { |tupel_1|
       andere_relation.each { |tupel_2|
         if tupel_1.b == tupel_2.a
@@ -122,6 +119,53 @@ class Relation
         end
       }
     }
+    new_relation
+  end
+
+  def kopiere
+    new_relation = Relation.new(set_a, set_b)
+
+    # copy Tupel from current Relation to new Relation
+    @relation.each { |tupel|
+      new_relation.add(tupel)
+    }
+    new_relation
+  end
+
+  def reflexiver_abschluss
+    raise 'Mengen sind nicht identisch. Kein reflexiver Abschluss.' unless set_a === set_b
+    new_relation = kopiere
+    # add reflexive Tupel to new Relation
+    set_a.each { |element| new_relation.add(Tupel.new(element,element)) }
+
+    new_relation
+  end
+
+  def symmetrischer_abschluss
+    raise 'Mengen sind nicht identisch. Kein symmetrischer Abschluss.' unless set_a === set_b
+    new_relation = kopiere
+    # add symmetrische Tupel to new Relation
+    # convert new Relation to Array to prevent modifying hash during iteration
+    new_relation.to_a.each { |tupel| new_relation.add(Tupel.new(tupel.b,tupel.a)) }
+
+    new_relation
+  end
+
+  def transitiver_abschluss
+    raise 'Mengen sind nicht identisch. Kein symmetrischer Abschluss.' unless set_a === set_b
+    new_relation = kopiere
+
+    # keep adding transitive Tupel to new Relation until it's transitiv
+    until new_relation.transitiv?
+      new_relation.to_a.each { |tupel_1|
+        new_relation.to_a.each { |tupel_2|
+          if tupel_1.b == tupel_2.a
+            new_relation.add(Tupel.new(tupel_1.a,tupel_2.b))
+          end
+        }
+      }
+    end
+
     new_relation
   end
 
