@@ -19,7 +19,7 @@ class Relation
     # make sure argument is Tupel
     if tupel.kind_of?(Tupel)
       # make sure Tupels are valid
-      if @set_a.include?(tupel.a) && @set_b.include?(tupel.b)
+      if set_a.include?(tupel.a) && set_b.include?(tupel.b)
         @relation.add(tupel)
       end
     end
@@ -180,18 +180,55 @@ class Relation
     new_relation
   end
 
+  #=========== Abbildung ===========
+  def abbildung?
+    links_total? && rechts_eindeutig?
+  end
+
+  def injektiv?
+    abbildung? && links_eindeutig?
+  end
+
+  def surjekiv?
+    abbildung? && rechts_total?
+  end
+
+  def bijektiv?
+    injektiv? && surjekiv?
+  end
+
+  def urbild
+    # make sure Relation is Abbildung
+    raise 'Relation ist keine Abbildung.' unless abbildung?
+
+    # create new Relation from Potenzmenge of set_b to Potenzmenge of set_a
+    p_set_a = set_a.p_menge
+    p_set_b = set_b.p_menge
+    new_relation = Relation.new(p_set_b, p_set_a)
+
+    # find the Urbildmenge for every Teilmenge der Potenzmenge of set_b
+    new_relation.set_a.each { |element_set_a|
+      # select element from set_a that's equal to a in (a,b)ϵR and b ϵ current Teilmenge der Potenzmenge of set_b
+      element_set_b = Set.new(set_a.select { |element| @relation.any? {|tupel| element == tupel.a && element_set_a.include?(tupel.b)} })
+      new_relation.add(Tupel.new(element_set_a, element_set_b))
+    }
+
+    new_relation
+  end
+
   def to_s
     # return empty Relation when Relation's size equal 0
     return 'Relation{}' if size == 0
 
     # map elements from Relation to an array
-    relation_s = "Relation{#{self.map { |x| x.to_s }}}"
+    relation_s = "Relation{#{@relation.map { |x| x.to_s }}}"
 
     # remove square brackets and double quotes
-    relation_s.delete!('[]"')
+    relation_s.delete('[]"')
   end
 
 end
+
 
 
 

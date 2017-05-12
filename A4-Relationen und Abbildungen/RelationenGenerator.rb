@@ -25,8 +25,8 @@ class RelationenGenerator
     relation = Relation.new(set_a, set_b)
 
     # Abbildung: von jedem a muss genau ein Pfeil ausgehen, also linksvollständig und rechtseindeutig
-    rand_b = rand(set_b.size)
     set_a.each { |a|
+      rand_b = rand(set_b.size)
       relation.add(Tupel.new(a, set_b.to_a[rand_b]))
     }
 
@@ -36,25 +36,19 @@ class RelationenGenerator
 end
 
 
-set_a = Set.new([1, 2, 3])
-set_b = Set.new([1, 3, 4])
-set_c = Set.new([1, 5, 6, 7])
-set_d = Set.new([1])
-set_e = Set.new([4])
+set_a = Set.new([1, 2, 3, 7])
+set_b = Set.new([4, 5, 6])
 
-my_relation = Relation.new(set_a, set_a)
-andere_relation = Relation.new(set_b, set_c)
+puts "Set a #{set_a}"
+puts "Set b #{set_b}"
 
+my_abbildung = Relation.new(set_a, set_b)
+my_abbildung.add(Tupel.new(1,5)).add(Tupel.new(2,6)).add(Tupel.new(3,4)).add(Tupel.new(7,6))
 
-my_relation.add(Tupel.new(1,2))
-my_relation.add(Tupel.new(2,3))
-my_relation.add(Tupel.new(3,3))
+puts "Abbildung #{my_abbildung}"
+puts set_b.p_menge
+puts set_a.p_menge
 
-puts my_relation
-
-puts my_relation.symmetrischer_abschluss
-
-
-
+puts my_abbildung.urbild.abbildung?
 
 

@@ -4,26 +4,32 @@ require 'Set'
 # und korrektem Inhaltsvergleich für Mengen von Mengen
 
 class Set
-
-  def ==(other)
-    # return false if compared with a nil object
-    return false if other.nil?
-
-    # return true if compared to the object itself
-    return true if self.equal?(other)
-
-    # return false if other's not Set
-    return false if self.class != other.class
-
-    # return true if current set is Teilmenge von other set
-    self.all?{|e| other.include?(e)}
+  # get the Potenzmenge of Set
+  def p_menge
+    p_menge = Set.new
+    Potenzmenge.new(self).each { |element| p_menge.add(element) }
+    p_menge
   end
 
-  # anolog to ==
-  def eql?(other)
-    # use the overwriten method ==(other)
-    self == other
-  end
+  # def ==(other)
+  #   # return false if compared with a nil object
+  #   return false if other.nil?
+  #
+  #   # return true if compared to the object itself
+  #   return true if self.equal?(other)
+  #
+  #   # return false if other's not Set
+  #   return false if self.class != other.class
+  #
+  #   # return true if current Set is Teilmenge von other Set
+  #   self.all?{|e| other.include?(e)}
+  # end
+  #
+  # # anolog to ==
+  # def eql?(other)
+  #   # use the overwriten method ==(other)
+  #   self == other
+  # end
 
   # set a hash
   def hash
@@ -41,7 +47,7 @@ class Set
     set = "Set{#{self.map{|x| x }}}"
 
     # delete square brackets 
-    set.delete!('[]')
+    set.delete('[]')
   end
 end
 
@@ -51,7 +57,6 @@ class Potenzmenge
   include Enumerable
   
   def initialize(a_set)
-
     @potenz = Set.new(a_set.inject(Set.new.add(Set.new)){|acc,s|
       r = Set.new
       acc.each{|set| r.add(set);  r.add(set.clone.add(s)) }
@@ -64,7 +69,7 @@ class Potenzmenge
   end
 
   def to_s
-    "#{@potenz}"
+    'Potenzmenge' + "#{@potenz}".delete('#<Set: >')
   end
 
   def inspect
