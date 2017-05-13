@@ -104,7 +104,6 @@ class RelationenTest < Test::Unit::TestCase
                 .add(Tupel.new(2,3))  \
                 .add(Tupel.new(3,3))  \
                 .add(Tupel.new(1,3))  \
-    
   end
 
   # test for reflexiv?
@@ -174,6 +173,7 @@ class RelationenTest < Test::Unit::TestCase
   def test_reflexiver_abschluss
     assert(@r_original.reflexiver_abschluss == @a_reflexiv)
   end
+
   # test for symmetrischer_abschluss?
   def test_symmetrischer_abschluss
     assert(@r_original.symmetrischer_abschluss == @a_symmetrisch)
