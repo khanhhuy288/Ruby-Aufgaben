@@ -11,25 +11,25 @@ class Set
     p_menge
   end
 
-  # def ==(other)
-  #   # return false if compared with a nil object
-  #   return false if other.nil?
-  #
-  #   # return true if compared to the object itself
-  #   return true if self.equal?(other)
-  #
-  #   # return false if other's not Set
-  #   return false if self.class != other.class
-  #
-  #   # return true if current Set is Teilmenge von other Set
-  #   self.all?{|e| other.include?(e)}
-  # end
-  #
-  # # anolog to ==
-  # def eql?(other)
-  #   # use the overwriten method ==(other)
-  #   self == other
-  # end
+  def ==(other)
+    # return false if compared with a nil object
+    return false if other.nil?
+
+    # return true if compared to the object itself
+    return true if self.equal?(other)
+
+    # return false if other's not Set
+    return false if self.class != other.class
+
+    # return true if every element from self is an element from other and vice versa
+    self.all? { |e| other.include?(e) } && other.all? { |e| self.include?(e) }
+  end
+
+  # anolog to ==
+  def eql?(other)
+    # use the overwriten method ==(other)
+    self == other
+  end
 
   # set a hash
   def hash

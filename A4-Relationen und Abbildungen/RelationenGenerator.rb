@@ -36,19 +36,19 @@ class RelationenGenerator
 end
 
 
-set_a = Set.new([1, 2, 3, 7])
-set_b = Set.new([4, 5, 6])
+set_a = Set.new([1, 2, 3])
+set_b = Set.new([4, 5, 6, 7])
 
-puts "Set a #{set_a}"
-puts "Set b #{set_b}"
+relation_1 = Relation.new(set_a, set_b)
+relation_2 = Relation.new(set_a, set_b)
+relation_1.add(Tupel.new(1,5)).add(Tupel.new(2,7)).add(Tupel.new(3,4))
+relation_2.add(Tupel.new(1,5)).add(Tupel.new(3,4)).add(Tupel.new(2,7))
+puts relation_1
+puts relation_2
+puts relation_1 == relation_2
 
-my_abbildung = Relation.new(set_a, set_b)
-my_abbildung.add(Tupel.new(1,5)).add(Tupel.new(2,6)).add(Tupel.new(3,4)).add(Tupel.new(7,6))
 
-puts "Abbildung #{my_abbildung}"
-puts set_b.p_menge
-puts set_a.p_menge
 
-puts my_abbildung.urbild.abbildung?
+
 
 

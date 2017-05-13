@@ -216,6 +216,17 @@ class Relation
     new_relation
   end
 
+  def ==(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    self.all? { |tupel| other.include?(tupel) } && other.all? { |tupel| self.include?(tupel) }
+  end
+
+  def eql?(other)
+    self == other
+  end
+    
   def to_s
     # return empty Relation when Relation's size equal 0
     return 'Relation{}' if size == 0
@@ -228,8 +239,6 @@ class Relation
   end
 
 end
-
-
 
 
 
