@@ -1,4 +1,4 @@
-﻿require 'test/unit'
+require 'test/unit'
 require 'Set'
 require './Potenzmenge'
 require './Tupel'
@@ -13,6 +13,13 @@ class RelationenTest < Test::Unit::TestCase
 
     @r_empty = Relation.new(set_a, set_a)
 
+    @set_a = set_a.clone
+    
+    @r_max_aa = Relation.new(set_a, set_a)
+    @r_max_aa.add(Tupel.new(1,1)).add(Tupel.new(1,2)).add(Tupel.new(1,3))  \
+              .add(Tupel.new(2,1)).add(Tupel.new(2,2)).add(Tupel.new(2,3)) \
+              .add(Tupel.new(3,1)).add(Tupel.new(3,2)).add(Tupel.new(3,3)) \
+    
     #=========== R ⊆ A x A ===========
     @r_nothing_aa = Relation.new(set_a, set_a)
     @r_nothing_aa.add(Tupel.new(1,2))  \
@@ -86,14 +93,15 @@ class RelationenTest < Test::Unit::TestCase
                 .add(Tupel.new(3,3))  \
     
     @a_reflexiv = Relation.new(set_a,set_a)
-    @a_reflexiv.add(Tupel.new(1,2))     \
+    @a_reflexiv.add(Tupel.new(1,2))   \
                   .add(Tupel.new(2,3))  \
                   .add(Tupel.new(3,3))  \
                   .add(Tupel.new(1,1))  \
                   .add(Tupel.new(2,2))  \
 
+    
     @a_symmetrisch = Relation.new(set_a,set_a)
-    @a_symmetrisch.add(Tupel.new(1,2))    \
+    @a_symmetrisch.add(Tupel.new(1,2))  \
                     .add(Tupel.new(2,3))  \
                     .add(Tupel.new(3,3))  \
                     .add(Tupel.new(2,1))  \
@@ -104,6 +112,12 @@ class RelationenTest < Test::Unit::TestCase
                 .add(Tupel.new(2,3))  \
                 .add(Tupel.new(3,3))  \
                 .add(Tupel.new(1,3))  \
+    
+  end
+  
+  # test for generiere_relation
+  def test_generiere_relation
+    assert(RelationenGenerator.generiere_relation(@set_a,@set_a, @set_a.size*@set_a.size) == @r_max_aa)
   end
 
   # test for reflexiv?
@@ -173,7 +187,7 @@ class RelationenTest < Test::Unit::TestCase
   def test_reflexiver_abschluss
     assert(@r_original.reflexiver_abschluss == @a_reflexiv)
   end
-
+  
   # test for symmetrischer_abschluss?
   def test_symmetrischer_abschluss
     assert(@r_original.symmetrischer_abschluss == @a_symmetrisch)
