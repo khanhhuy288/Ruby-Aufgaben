@@ -9,7 +9,7 @@ class Relation
 
   def initialize(set_a, set_b)
     # make sure arguments are Set
-    raise 'Ungültige Parameter' unless set_a.kind_of?(Set) || set_b.kind_of?(Set)
+    raise 'Ungültige Parameter' if !set_a.kind_of?(Set) || !set_b.kind_of?(Set)
     @set_a = set_a.clone
     @set_b = set_b.clone
     @relation = Set.new

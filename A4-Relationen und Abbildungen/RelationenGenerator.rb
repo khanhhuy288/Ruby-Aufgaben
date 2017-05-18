@@ -36,16 +36,16 @@ class RelationenGenerator
 end
 
 
-set_a = Set.new([1, 2, 3])
-set_b = Set.new([4, 5, 6, 7])
-
-relation_1 = Relation.new(set_a, set_b)
-relation_2 = Relation.new(set_a, set_b)
-relation_1.add(Tupel.new(1,5)).add(Tupel.new(2,7)).add(Tupel.new(3,4))
-relation_2.add(Tupel.new(1,5)).add(Tupel.new(3,4)).add(Tupel.new(2,7))
-puts relation_1
-puts relation_2
-puts relation_1 == relation_2
+# set_a = Set.new([1, 2, 3])
+# set_b = Set.new([4, 5, 6, 7])
+#
+# relation_1 = Relation.new(set_a, set_b)
+# relation_2 = Relation.new(set_a, set_b)
+# relation_1.add(Tupel.new(1,5)).add(Tupel.new(2,7)).add(Tupel.new(3,4))
+# relation_2.add(Tupel.new(1,5)).add(Tupel.new(3,4)).add(Tupel.new(2,7))
+# puts relation_1
+# puts relation_2
+# puts relation_1 == relation_2
 
 
 
