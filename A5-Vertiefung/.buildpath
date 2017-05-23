@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<buildpath>
+	<buildpathentry kind="src" path="a5_1"/>
+	<buildpathentry kind="src" path="a5_2"/>
+	<buildpathentry kind="src" path="a5_3"/>
+	<buildpathentry kind="src" path="a5_4"/>
+	<buildpathentry kind="src" path="a5_5"/>
+	<buildpathentry kind="con" path="org.eclipse.dltk.launching.INTERPRETER_CONTAINER"/>
+</buildpath>

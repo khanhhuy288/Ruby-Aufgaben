@@ -14,11 +14,13 @@ class CaesarCoder
   def encode(byte, key)
     # make sure bytecode is a letter
     if ('A'..'Z').include?(byte.chr) || ('a'..'z').include?(byte.chr)
-      if byte > 96
-        (byte + key - 'a'.ord) % 26 + 'a'.ord
-      else
-        (byte + key - 'A'.ord) % 26 + 'A'.ord
-      end
+      start = ((byte > 96) ?  'a'.ord() : "A".ord())
+      (byte +key -start) % 26 + start
+#      if byte > 96
+#        (byte + key - 'a'.ord) % 26 + 'a'.ord
+#      else
+#        (byte + key - 'A'.ord) % 26 + 'A'.ord
+#      end
     else
       byte
     end

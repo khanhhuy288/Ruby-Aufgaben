@@ -1,24 +1,33 @@
 def matrix?(mat)
-  # make sure matrix is an Array
-  return false unless mat.is_a?(Array)
-  (0...(mat.size - 1)).all? {|z| mat[z].is_a?(Array) && mat[z].size == mat[z+1].size }  &&
-      mat[mat.size - 1].is_a?(Array) && mat[mat.size - 1].size == mat[0].size
+  # make sure matrix is an Array of rows 
+  return false unless mat.is_a?(Array) && mat[0].is_a?(Array) 
+  
+  size = mat[0].size()
+  
+  # make sure all rows are Arrays and have same size
+  (0...(mat.size - 1)).all? {|z| mat[z].is_a?(Array) && mat[z].size == size }  
 end
 
 def gewichtet(mat)
-  # sizes of mat
+  # calculate sizes of mat
   zeile = mat.size
   spalte = mat[0].size
 
-  ergebnis = Array.new(zeile){Array.new(spalte)}
+  ergebnis = Array.new(zeile){Array.new(spalte,0)}
 
-  (0...zeile).cycle {|i|
-    (0...spalte).cycle {|j|
-      ergebnis[i][j] = (mat[i-1][j-1] + mat[i-1][j] + mat[i-1][j+1] +
-                        mat[i][j-1] + mat[i][j] + mat[i][j+1] +
-                        mat[i+1][j-1] + mat[i+1][j] + mat[i+1][j+1]) / 9
+  (0...zeile).each {|i|
+    (0...spalte).each {|j|
+      for nb_i in (-1..1) # Korridor für die Zeilen
+        for nb_j in (-1..1) # Korridor für die Spalten
+#          puts "#{(i)%mat.size()}, #{(j)%mat[0].size()}"
+#          puts "#{(i+nb_i)%mat.size()}, #{(j+nb_j)%mat[0].size()}"
+          ergebnis[i][j] +=  mat[(i+nb_i)%mat.size()][(j+nb_j)%mat[0].size()]
+        end
+      end
+      ergebnis[i][j] /= 9.0
     }
   }
+  ergebnis
 end
 
 # gegeben
@@ -39,6 +48,11 @@ puts matrix?([[1]]) # true
 puts matrix?([[]]) # true
 puts matrix?(Array.new(4){Array.new(3,1)}) # true
 
+zeilen_laenge = 10
+spalten_laenge = 6
+
+puts -1%zeilen_laenge
+puts 11%zeilen_laenge
 
 #
 ### Ergebnisse fuer gewichtet
@@ -99,3 +113,5 @@ pp_mat(gewichtet(orig3))
 #6.666667 6.000000 7.000000 8.000000 7.333333 
 #7.666667 7.000000 8.000000 9.000000 8.333333 
 #6.333333 5.666667 6.666667 7.666667 7.000000 
+
+
