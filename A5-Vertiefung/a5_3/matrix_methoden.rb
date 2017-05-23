@@ -1,23 +1,38 @@
 def matrix?(mat)
-  #TODO
+  # make sure matrix is an Array
+  return false unless mat.is_a?(Array)
+  (0...(mat.size - 1)).all? {|z| mat[z].is_a?(Array) && mat[z].size == mat[z+1].size }  &&
+      mat[mat.size - 1].is_a?(Array) && mat[mat.size - 1].size == mat[0].size
 end
 
 def gewichtet(mat)
-  #TODO
+  # sizes of mat
+  zeile = mat.size
+  spalte = mat[0].size
+
+  ergebnis = Array.new(zeile){Array.new(spalte)}
+
+  (0...zeile).cycle {|i|
+    (0...spalte).cycle {|j|
+      ergebnis[i][j] = (mat[i-1][j-1] + mat[i-1][j] + mat[i-1][j+1] +
+                        mat[i][j-1] + mat[i][j] + mat[i][j+1] +
+                        mat[i+1][j-1] + mat[i+1][j] + mat[i+1][j+1]) / 9
+    }
+  }
 end
 
 # gegeben
 def pp_mat(mat)
-  for zeile in mat
-    for wert in zeile
-      printf("%3f ", wert)
-    end
+  mat.each { |zeile|
+    zeile.each { |wert|
+      printf('%3f ', wert)
+    }
     puts
-  end
+  }
   puts
 end
 
-puts matrix?(Array.new()) # false
+puts matrix?(Array.new) # false
 puts matrix?(Array.new(4){|zeile| Array.new(zeile +1)}) # false
 puts matrix?(Array.new(4,17)) # false
 puts matrix?([[1]]) # true
