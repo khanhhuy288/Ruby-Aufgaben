@@ -124,6 +124,7 @@ class RelationenTest < Test::Unit::TestCase
   def test_reflexiv
     assert(@r_reflexiv.reflexiv?)
     assert(!@r_nothing_aa.reflexiv?)
+    assert(@r_max_aa.reflexiv?)
     assert(!@r_empty.reflexiv?)
   end
 
@@ -131,13 +132,15 @@ class RelationenTest < Test::Unit::TestCase
   def test_symmetrisch
     assert(@r_symmetrisch.symmetrisch?)
     assert(!@r_nothing_aa.symmetrisch?)
+    assert(@r_max_aa.symmetrisch?)
     assert(@r_empty.symmetrisch?)
   end
 
   # test for asymmetrisch?
   def test_asymmetrisch
     assert(@r_asymmetrisch.asymmetrisch?)
-    assert(!@r_nothing_aa.asymmetrisch?)
+    assert(@r_nothing_aa.asymmetrisch?)
+    assert(!@r_max_aa.asymmetrisch?)
     assert(@r_empty.asymmetrisch?)
   end
 
@@ -145,6 +148,7 @@ class RelationenTest < Test::Unit::TestCase
   def test_anti_symmetrisch
     assert(@r_anti_symmetrisch.anti_symmetrisch?)
     assert(!@r_nothing_aa.anti_symmetrisch?)
+    assert(!@r_max_aa.anti_symmetrisch?)
     assert(@r_empty.anti_symmetrisch?)
   end
 
@@ -152,6 +156,7 @@ class RelationenTest < Test::Unit::TestCase
   def test_transitiv
     assert(@r_transitiv.transitiv?)
     assert(!@r_nothing_aa.transitiv?)
+    assert(@r_max_aa.transitiv?)
     assert(@r_empty.transitiv?)
   end
 

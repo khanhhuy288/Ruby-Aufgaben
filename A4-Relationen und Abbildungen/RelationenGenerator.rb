@@ -9,12 +9,14 @@ class RelationenGenerator
     max_tupels = set_a.size * set_b.size
     raise 'k muss <= maximale Anzahl der Tupels sein.' if k > max_tupels
 
+    ary_a = set_a.to_a()
+    ary_b = set_b.to_a()
+    a_size = set_a.size()
+    b_size = set_b.size()
     # add k Tupels to Relation
     while relation.size < k
       # get 1 random element from each Set to make a Tupel
-      rand_a = rand(set_a.size)
-      rand_b = rand(set_b.size)
-      relation.add(Tupel.new(set_a.to_a[rand_a], set_b.to_a[rand_b]))
+      relation.add(Tupel.new(ary_a[ rand(a_size)], ary_b[rand(b_size)]))
     end
 
     return relation
