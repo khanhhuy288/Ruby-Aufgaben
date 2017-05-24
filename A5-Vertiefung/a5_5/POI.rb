@@ -18,11 +18,27 @@ class POI
     return self
   end
 
+  def ==(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@name,@geo_coord,@attachments] == [other.name,other.geo_coord,other.attachments]
+  end
+
+  def eql?(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@name,@geo_coord,@attachments].eql?([other.name,other.geo_coord,other.attachments])
+  end
+
+  def hash
+    @name.hash + @geo_coord.hash + @attachments.hash
+  end
+
   def to_s()
     return "POI(#@name,#@geo_coord,\{#{@attachments.sort().join(",")}\}"
   end
-
-  # TODO
 
 end
 
@@ -33,7 +49,25 @@ class Geokoordinate
     @lg = laengengrad
   end
 
-  def to_s()
+  def ==(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@bg,@lg] == [other.bg,other.lg]
+  end
+
+  def eql?(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@bg,@lg].eql?([other.bg,other.lg])
+  end
+
+  def hash
+    @bg.hash + @lg.hash
+  end
+
+  def to_s
     return "(#@bg,#@lg)"
   end
 
@@ -46,9 +80,35 @@ class Attachment
     @inhalt = inhalt
   end
 
+  def ==(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@name, @inhalt] == [other.name,other.inhalt]
+  end
+
+  def eql?(other)
+    return false if other.nil?
+    return true if self.equal?(other)
+    return false if self.class != other.class
+    [@name, @inhalt].eql?([other.name,other.inhalt])
+  end
+
+  def hash
+    @name.hash + @inhalt.hash
+  end
+
   def to_s()
     "At[#@name,#@inhalt]"
   end
 
 end
+
+#my_geo = Geokoordinate.new(56.34, 23.89);
+#your_geo = Geokoordinate.new(56.34, 23.89);
+#atach1 = Attachment.new("CollosVideo","prp1://video:videocollos1")
+#atach2 = Attachment.new("CollosVideo2","prp2://video:videocollos2")
+#list_atach1 = [] << atach1 << atach2
+#list_atach2 = [] << atach2 << atach1
+#print list_atach1 == list_atach2
 
