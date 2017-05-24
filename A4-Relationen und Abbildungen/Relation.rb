@@ -12,7 +12,7 @@ class Relation
     raise 'Ungültige Parameter' if !set_a.kind_of?(Set) || !set_b.kind_of?(Set)
     @set_a = set_a.clone
     @set_b = set_b.clone
-    @tupel = Set.new
+    @tupels = Set.new
   end
 
   def add(tupel)
@@ -20,7 +20,7 @@ class Relation
     if tupel.kind_of?(Tupel)
       # make sure Tupels are valid
       if set_a.include?(tupel.a) && set_b.include?(tupel.b)
-        @tupel.add(tupel)
+        @tupels.add(tupel)
       end
     end
 
@@ -29,29 +29,29 @@ class Relation
   end
 
   def size
-    @tupel.size
+    @tupels.size
   end
 
   # mix in Enumerable Module's methods
   def each(&block)
-    @tupel.each(&block)
+    @tupels.each(&block)
   end
  
 
   #=========== R ⊆ A x A ===========
   # für alle a ϵ A, (a,a) ϵ R
   def reflexiv?
-    @set_a.all? { |element| self.include?(Tupel.new(element,element))}
+    set_a.all? { |element| self.include?(Tupel.new(element,element))}
   end
 
   # (a,b) ϵ R => (b,a) ϵ R
   def symmetrisch?
-    self.all? { |t| @tupel.include?(t.reverse())}
+    self.all? { |t| @tupels.include?(t.reverse)}
   end
 
   # (a,b) ϵ R => (b,a) (not ϵ) R
   def asymmetrisch?
-    @tupel.empty?() || ! self.symmetrisch?
+    @tupels.empty? || ! self.symmetrisch?
   end
 
   # (a,b) ϵ R und (b,a) ϵ R => a = b
@@ -63,9 +63,9 @@ class Relation
   # (a,b) ϵ R und (b,c) ϵ R => (a,c) ϵ R
   def transitiv?
     # für alle (a1,b1) und (a2,b2) ϵ R muss b1 != a2 sein, sonst muss (a1,b2) ϵ R
-    all? {|tupel_1|
-      all? {|tupel_2|
-        (tupel_1.b != tupel_2.a) || @tupel.include?(Tupel.new(tupel_1.a,tupel_2.b))
+    self.all? {|tupel_1|
+      self.all? {|tupel_2|
+        (tupel_1.b != tupel_2.a) || self.include?(Tupel.new(tupel_1.a,tupel_2.b))
       }
     }
   end
@@ -74,8 +74,8 @@ class Relation
   # für alle a ϵ A, (a,b) ϵ R und (a,c) ϵ R => b = c
   # für alle (a1,b1) und (a2,b2) gibt es NUR EINE a1 == a2
   def rechts_eindeutig?
-    @tupel.all? {|tupel_1|
-      @tupel.one? {|tupel_2|
+    self.all? {|tupel_1|
+      self.one? {|tupel_2|
         tupel_1.a == tupel_2.a
       }
     }
@@ -84,8 +84,8 @@ class Relation
   # für alle a ϵ A, (b,a) ϵ R und (c,a) ϵ R => b = c
   # für alle (a1,b1) und (a2,b2) gibt es NUR EINE b1 == b2
   def links_eindeutig?
-    @tupel.all? {|tupel_1|
-      @tupel.one? {|tupel_2|
+    self.all? {|tupel_1|
+      self.one? {|tupel_2|
         tupel_1.b == tupel_2.b
       }
     }
@@ -93,17 +93,17 @@ class Relation
 
   # für alle b ϵ B, existiert a ϵ A mit (a,b) ϵ R
   def rechts_total?
-    return true if @tupel.size == 0
-    @set_b.all? {|element|
-      @tupel.any? {|tupel| tupel.b == element}
+    return true if self.size == 0
+    set_b.all? {|element|
+      self.any? {|tupel| tupel.b == element}
     }
   end
 
   # für alle a ϵ A, existiert b ϵ B mit (a,b) ϵ R
   def links_total?
-    return true if @tupel.size == 0
-    @set_a.all? {|element|
-      @tupel.any? {|tupel| tupel.a == element}
+    return true if self.size == 0
+    set_a.all? {|element|
+      self.any? {|tupel| tupel.a == element}
     }
   end
 
@@ -113,7 +113,7 @@ class Relation
     new_relation = Relation.new(set_a, andere_relation.set_b)
 
     # add new Tupel when tupel_1's b == tupel_2's a
-    @tupel.each { |tupel_1|
+    self.each { |tupel_1|
       andere_relation.each { |tupel_2|
         if tupel_1.b == tupel_2.a
           new_relation.add(Tupel.new(tupel_1.a, tupel_2.b))
@@ -127,7 +127,7 @@ class Relation
     new_relation = Relation.new(set_a, set_b)
 
     # copy Tupel from current Relation to new Relation
-    @tupel.each { |tupel|
+    self.each { |tupel|
       new_relation.add(tupel)
     }
     new_relation
@@ -175,7 +175,7 @@ class Relation
     new_relation = Relation.new(set_b, set_a)
 
     # add Tupel from current Relation to new Relation, a and b of Tupel switch places
-    @tupel.each { |tupel|
+    self.each { |tupel|
       new_relation.add(tupel.reverse)
     }
     new_relation
@@ -210,7 +210,7 @@ class Relation
     # find the Urbildmenge for every Teilmenge der Potenzmenge of set_b
     p_set_b.each { |subset_b|
       # select element from set_a that's equal to a in (a,b)ϵR and b ϵ current Teilmenge der Potenzmenge of set_b
-      subset_a = Set.new(set_a.select { |element| @tupel.any? {|tupel| element == tupel.a && subset_b.include?(tupel.b)} })
+      subset_a = Set.new(set_a.select { |element| self.any? {|tupel| element == tupel.a && subset_b.include?(tupel.b)} })
       new_relation.add(Tupel.new(subset_b, subset_a))
     }
 
@@ -223,7 +223,8 @@ class Relation
     return false if self.class != other.class
     self.all? { |tupel| other.include?(tupel) } && other.all? { |tupel| self.include?(tupel) }
   end
-#
+
+#  eql? must be used together with hash
 #  def eql?(other)
 #    self == other
 #  end
@@ -233,7 +234,7 @@ class Relation
     return 'Relation{}' if size == 0
 
     # map elements from Relation to an array
-    relation_s = "Relation{#{@tupel.map { |x| x.to_s }}}"
+    relation_s = "Relation{#{self.map { |x| x.to_s }}}"
 
     # remove square brackets and double quotes
     relation_s.delete('[]"')
@@ -241,24 +242,14 @@ class Relation
 
 end
 
+# relation = Relation.new(Set.new([1,2,3]), Set.new([1,2,3]))
+# relation.add(Tupel.new(1,3)).add(Tupel.new(3,2))
+# puts relation
 
 
 
 
-rel = Relation.new(Set.new([1,2,3]),Set.new([3,4,5]))
-  
-rel.add(Tupel.new(1,3)).add(Tupel.new(3,5)).add(Tupel.new(1,3))
 
-rel.each(){|tups| puts tups}  
-
-puts rel.all?(){|t| t.a == 1 }
-  
-  
-#def asymmetrisch?
-#  @tupel.empty?() || ! self.symmetrisch?
-#end
-
-rel.asymmetrisch?()
 
 
 
