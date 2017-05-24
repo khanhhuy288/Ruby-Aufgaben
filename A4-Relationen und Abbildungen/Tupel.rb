@@ -5,7 +5,7 @@ class Tupel
     @b = b
   end
 
-  def reverse()
+  def reverse
     Tupel.new(@b,@a)
   end
   
@@ -13,7 +13,8 @@ class Tupel
     return false if other.nil?
     return true if self.equal?(other)
     return false if self.class != other.class
-    @a == other.a && @b == other.b
+    [@a,@b] == [other.a,other.b]
+    #@a == other.a && @b == other.b 
   end
 
   def eql?(other)
@@ -33,4 +34,6 @@ class Tupel
   end
 
 end
+
+
 

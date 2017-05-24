@@ -48,9 +48,9 @@ class CaesarCoder
 
 end
 
-cc = CaesarCoder.new('plain.txt','C')
-cc.encode_file
-cc.decode_file
+#cc = CaesarCoder.new('plain.txt','C')
+#cc.encode_file
+#cc.decode_file
 
 
 
