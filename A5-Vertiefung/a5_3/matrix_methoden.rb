@@ -1,33 +1,32 @@
 def matrix?(mat)
-  # make sure matrix is an Array of rows 
+  # make sure matrix is an Array of rows
   return false unless mat.is_a?(Array) && mat[0].is_a?(Array) 
+ 
+  cols = mat[0].size
   
-  size = mat[0].size()
-  
-  # make sure all rows are Arrays and have same size
-  (0...(mat.size - 1)).all? {|z| mat[z].is_a?(Array) && mat[z].size == size }  
+  # make sure all rows are Arrays and have same cols
+  (0...mat.size).all? {|z| mat[z].is_a?(Array) && mat[z].size == cols }  
 end
 
 def gewichtet(mat)
   # calculate sizes of mat
-  zeile = mat.size
-  spalte = mat[0].size
+  rows = mat.size
+  cols = mat[0].size
 
-  ergebnis = Array.new(zeile){Array.new(spalte,0)}
+  # create new matrix filled with 0 
+  result = Array.new(rows){Array.new(cols,0)}
 
-  (0...zeile).each {|i|
-    (0...spalte).each {|j|
-      for nb_i in (-1..1) # Korridor für die Zeilen
-        for nb_j in (-1..1) # Korridor für die Spalten
-#          puts "#{(i)%mat.size()}, #{(j)%mat[0].size()}"
-#          puts "#{(i+nb_i)%mat.size()}, #{(j+nb_j)%mat[0].size()}"
-          ergebnis[i][j] +=  mat[(i+nb_i)%mat.size()][(j+nb_j)%mat[0].size()]
-        end
-      end
-      ergebnis[i][j] /= 9.0
+  (0...rows).each {|i|
+    (0...cols).each {|j|
+      (-1..1).each { |nb_i|       # corridor for rows
+        (-1..1).each { |nb_j|     # corridor for cols
+          result[i][j] +=  mat[(i+nb_i)%mat.size][(j+nb_j)%mat[0].size]
+        }
+      }  
+      result[i][j] /= 9.0
     }
   }
-  ergebnis
+  result
 end
 
 # gegeben
@@ -41,12 +40,12 @@ def pp_mat(mat)
   puts
 end
 
-puts matrix?(Array.new) # false
+puts matrix?(Array.new)                                 # false
 puts matrix?(Array.new(4){|zeile| Array.new(zeile +1)}) # false
-puts matrix?(Array.new(4,17)) # false
-puts matrix?([[1]]) # true
-puts matrix?([[]]) # true
-puts matrix?(Array.new(4){Array.new(3,1)}) # true
+puts matrix?(Array.new(4,17))                           # false
+puts matrix?([[1]])                                     # true
+puts matrix?([[]])                                      # true
+puts matrix?(Array.new(4){Array.new(3,1)})              # true
 
 zeilen_laenge = 10
 spalten_laenge = 6
