@@ -1,15 +1,16 @@
 class Kasse
-  # TODO
-  def initialize()
-    #TODO
+  include Enumerable 
+  
+  def initialize
+    @rechnungen = []
   end
 
-  def each(&b)
-    #TODO
+  def each(&block)
+    @rechnungen.each(&block)
   end
 
-  def produkt_haeufigkeiten()
-    #TODO
+  def produkt_haeufigkeiten
+    self.inject(Hash.new(0)) { |hash,produkt| hash[produkt] += 1; hash} 
   end
 
   # Gegeben
@@ -32,6 +33,8 @@ end
 
 
 class Rechnung
+  include Enumerable
+  
   # Gegeben
   attr_reader :positionen,:nr
   protected :positionen
@@ -42,22 +45,21 @@ class Rechnung
     end
   end
 
-  # TODO
-
   def initialize(nr)
-    #TODO
+    @nr = nr
+    @positionen = []
   end
 
-  def each(&b)
-    #TODO
+  def each(&block)
+    @positionen.each(&block)
   end
 
-  def rechnungs_betrag()
-    #TODO
+  def rechnungs_betrag
+    self.inject(0) { |akku, pos| akku + pos.preis }
   end
 
-  def count()
-    #TODO
+  def count
+    self.inject(0) { |akku, pos| akku + pos.anzahl }
   end
 
   # Gegeben
@@ -66,7 +68,7 @@ class Rechnung
     return self
   end
 
-  def to_s()
+  def to_s
     return "R#{@nr}:(#{rechnungs_betrag()}):#{count}/#{@positionen.size}:#{@positionen.join(",")}"
   end
 end
@@ -75,11 +77,39 @@ class Position
 
   attr_reader :preis,:produkt,:anzahl
   def initialize(produkt,anzahl,einzelpreis)
-    #TODO
+    @preis = einzelpreis * anzahl
+    @produkt = produkt
+    @anzahl = anzahl
   end
 
   def to_s()
     return "#{@produkt}(#{@anzahl}):#{preis}"
   end
 end
+
+pos1 = Position.new('Chicken', 5, 12)
+pos2 = Position.new('Soup', 6, 24)
+pos3 = Position.new('Burger', 3, 19)
+pos4 = Position.new('Soup', 8, 12)
+pos5 = Position.new('Burger', 9, 24)
+pos6 = Position.new('Chicken', 12, 19)
+
+rechnung1 = Rechnung.new(1) << pos1 << pos2 << pos3
+rechnung2 = Rechnung.new(2) << pos4 << pos3 << pos2
+rechnung3 = Rechnung.new(3) << pos6 << pos6 << pos6
+rechnung4 = Rechnung.new(4) << pos4 << pos5 << pos4
+
+my_kasse = Kasse.new << rechnung1 << rechnung2 << rechnung3 << rechnung4
+
+puts my_kasse
+
+
+
+
+
+
+
+
+
+
 
