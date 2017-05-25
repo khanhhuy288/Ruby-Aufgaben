@@ -1,6 +1,5 @@
 class Kasse
-  include Enumerable 
-  
+  include Enumerable
   def initialize
     @rechnungen = []
   end
@@ -10,7 +9,19 @@ class Kasse
   end
 
   def produkt_haeufigkeiten
-    self.inject(Hash.new(0)) { |hash,produkt| hash[produkt] += 1; hash} 
+#     self.inject(Hash.new(0)) { |hash,produkt| 
+#       hash[produkt] += position.anzahl
+#       
+#       hash
+#     }
+    result = {}  
+    self.each { |rechnung|
+      rechnung.positionen.each { |position|
+        result[position.produkt] ||= 0
+        result[position.produkt] += position.anzahl
+      }
+    }
+    result
   end
 
   # Gegeben
@@ -31,13 +42,12 @@ class Kasse
 
 end
 
-
 class Rechnung
   include Enumerable
-  
+
   # Gegeben
   attr_reader :positionen,:nr
-  protected :positionen
+#  protected :positionen
   def self.reset()
     if self.class_variables().size() > 0
       var = class_variables[0]
@@ -87,29 +97,21 @@ class Position
   end
 end
 
-pos1 = Position.new('Chicken', 5, 12)
-pos2 = Position.new('Soup', 6, 24)
-pos3 = Position.new('Burger', 3, 19)
-pos4 = Position.new('Soup', 8, 12)
-pos5 = Position.new('Burger', 9, 24)
-pos6 = Position.new('Chicken', 12, 19)
+#pos1 = Position.new('Chicken', 5, 12)
+#pos2 = Position.new('Soup', 6, 24)
+#pos3 = Position.new('Burger', 3, 19)
+#pos4 = Position.new('Soup', 8, 12)
+#pos5 = Position.new('Burger', 9, 24)
+#pos6 = Position.new('Chicken', 12, 19)
+#
+#rechnung1 = Rechnung.new(1) << pos1 << pos2 << pos3
+#rechnung2 = Rechnung.new(2) << pos4 << pos3 << pos2
+#rechnung3 = Rechnung.new(3) << pos6 << pos6 << pos6
+#rechnung4 = Rechnung.new(4) << pos4 << pos5 << pos4
+#
+#my_kasse = Kasse.new << rechnung1 << rechnung2 << rechnung3 << rechnung4
+#
+#puts my_kasse
 
-rechnung1 = Rechnung.new(1) << pos1 << pos2 << pos3
-rechnung2 = Rechnung.new(2) << pos4 << pos3 << pos2
-rechnung3 = Rechnung.new(3) << pos6 << pos6 << pos6
-rechnung4 = Rechnung.new(4) << pos4 << pos5 << pos4
-
-my_kasse = Kasse.new << rechnung1 << rechnung2 << rechnung3 << rechnung4
-
-puts my_kasse
-
-
-
-
-
-
-
-
-
-
+puts
 
