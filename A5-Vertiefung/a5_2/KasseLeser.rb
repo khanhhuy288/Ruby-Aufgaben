@@ -6,32 +6,33 @@ class KasseLeser
     kasse = Kasse.new
 
     # show file in console without extraneous whitespaces and blank lines
-    File.open('a5_2/rechnungen.sv', 'r').each_line { |line|
-      puts line.strip.squeeze(' ') unless line.chomp.empty?
-    }
+    #    File.open('a5_2/rechnungen.sv', 'r').each_line { |line|
+    #      puts line.strip.squeeze(' ') unless line.chomp.empty?
+    #    }
 
     File.open('a5_2/rechnungen.sv', 'r').each_line { |line|
-      # read valid line 
+      # read valid line
       unless line.chomp.empty?
         # create array with Rechnung's number and positions
         rechnung_arr = line.strip.squeeze(' ').split('||')
-        
-        # create a new Rechnung 
-        rechnung = Rechnung.new(rechnung_arr[0].to_i)
+
+        # create a new Rechnung
+        rechnung = Rechnung.new(Integer(rechnung_arr[0]))
         (1...rechnung_arr.size).each { |i|
-          # create array with Position's preis and produkt 
+          # create array with Position's preis and produkt
           position_arr = rechnung_arr[i].split(';')
-          
+
           produkt = position_arr[0].strip
-          preis = position_arr[1].to_i
-          
-          # create new Position in Rechnung 
+          preis = Integer(position_arr[1])
+
+          # create new Position in Rechnung
           position = Position.new(produkt,preis)
           rechnung << position
         }
-        
-        # add new Rechnung to Kasse 
+
+        # add new Rechnung to Kasse
         kasse << rechnung
+      else puts 'Leerzeile überlesen'
       end
     }
 
@@ -43,5 +44,7 @@ class KasseLeser
   end
 
 end
+
+puts Integer('42')
 
 print KasseLeser.lese_kasse_von('rechnungen.sv')
