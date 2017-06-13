@@ -16,7 +16,7 @@ class Kasse
 #     }
     result = {}  
     self.each { |rechnung|
-      rechnung.positionen.each { |position|
+      rechnung.each { |position|
         result[position.produkt] ||= 0
         result[position.produkt] += position.anzahl
       }
@@ -27,17 +27,17 @@ class Kasse
   # Gegeben
   def <<(rechnung)
     @rechnungen << rechnung
-    return self
+    self
   end
 
   # Gegeben
-  def kassen_sturz()
-    self.inject(0) {|akku,rechnung| akku + rechnung.rechnungs_betrag()}
+  def kassen_sturz
+    self.inject(0) {|akku,rechnung| akku + rechnung.rechnungs_betrag}
   end
 
   # Gegeben
-  def to_s()
-    return "Kasse:\n #{@rechnungen.join("\n ")}\n Gesamt:#{kassen_sturz()}"
+  def to_s
+    "Kasse:\n #{@rechnungen.join("\n ")}\n Gesamt:#{kassen_sturz}"
   end
 
 end
@@ -47,9 +47,9 @@ class Rechnung
 
   # Gegeben
   attr_reader :positionen,:nr
-#  protected :positionen
-  def self.reset()
-    if self.class_variables().size() > 0
+  protected :positionen
+  def self.reset
+    if self.class_variables.size > 0
       var = class_variables[0]
       self.class_variable_set(var,0)
     end
@@ -73,13 +73,13 @@ class Rechnung
   end
 
   # Gegeben
-  def << pos
+  def << (pos)
     @positionen << pos
-    return self
+    self
   end
 
   def to_s
-    return "R#{@nr}:(#{rechnungs_betrag()}):#{count}/#{@positionen.size}:#{@positionen.join(",")}"
+    "R#{@nr}:(#{rechnungs_betrag}):#{count}/#{@positionen.size}:#{@positionen.join(',')}"
   end
 end
 
@@ -92,8 +92,8 @@ class Position
     @anzahl = anzahl
   end
 
-  def to_s()
-    return "#{@produkt}(#{@anzahl}):#{preis}"
+  def to_s
+    "#{@produkt}(#{@anzahl}):#{preis}"
   end
 end
 

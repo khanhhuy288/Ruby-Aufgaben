@@ -33,7 +33,7 @@
       <file leaf-file-name="Relation.rb" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../A4-Relationen und Abbildungen/Relation.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1810">
+            <state relative-caret-position="575">
               <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
               <folding />
             </state>
@@ -129,6 +129,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -143,7 +144,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -398,9 +398,9 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Ruby.matrix_methoden" />
-        <item index="1" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'KasseTest': A5-Vertiefung" />
-        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_encode: A5-Vertiefung" />
+        <item index="0" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.test_encode: A5-Vertiefung" />
+        <item index="1" class="java.lang.String" itemvalue="Ruby.matrix_methoden" />
+        <item index="2" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'KasseTest': A5-Vertiefung" />
         <item index="3" class="java.lang.String" itemvalue="Test::Unit/Shoulda/Minitest.Run test 'CaesarCoderTest': A5-Vertiefung" />
         <item index="4" class="java.lang.String" itemvalue="Ruby.CaesarCoder" />
       </list>
@@ -436,6 +436,7 @@
       <workItem from="1494428920047" duration="1243000" />
       <workItem from="1494444441014" duration="14468000" />
       <workItem from="1495632544759" duration="1177000" />
+      <workItem from="1495717771309" duration="126000" />
     </task>
     <servers />
   </component>
@@ -451,13 +452,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="73513000" />
+    <option name="totallyTimeSpent" value="73639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1378" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31183612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31638846" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32967034" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -617,7 +618,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../A4-Relationen und Abbildungen/Relation.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1810">
+        <state relative-caret-position="575">
           <caret line="247" column="0" lean-forward="false" selection-start-line="247" selection-start-column="0" selection-end-line="247" selection-end-column="0" />
           <folding />
         </state>

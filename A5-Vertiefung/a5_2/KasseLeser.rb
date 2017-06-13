@@ -7,14 +7,12 @@ class KasseLeser
 
     # show file in console without extraneous whitespaces and blank lines
     File.open('a5_2/rechnungen.sv', 'r').each_line { |line|
-      if !line.chomp.empty?
-        puts line.strip.squeeze(' ')
-      end
+      puts line.strip.squeeze(' ') unless line.chomp.empty?
     }
 
     File.open('a5_2/rechnungen.sv', 'r').each_line { |line|
       # read valid line 
-      if !line.chomp.empty?
+      unless line.chomp.empty?
         # create array with Rechnung's number and positions
         rechnung_arr = line.strip.squeeze(' ').split('||')
         
@@ -37,7 +35,7 @@ class KasseLeser
       end
     }
 
-    #    position = Position.new("Gel Play", 7)
+    #    position = Position.new('Gel Play', 7)
     #    rechnung = Rechnung.new(2) << position
     #    kasse = Kasse.new << rechnung
 
@@ -46,4 +44,4 @@ class KasseLeser
 
 end
 
-print KasseLeser.lese_kasse_von("rechnungen.sv")
+print KasseLeser.lese_kasse_von('rechnungen.sv')

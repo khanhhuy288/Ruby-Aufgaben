@@ -9,13 +9,13 @@ class POI
   end
 
   def <<(attachment)
-    if !attachment.is_a?(Attachment)
+    unless attachment.is_a?(Attachment)
       return self
     end
-    if !(@attachments.include?(attachment))
+    unless @attachments.include?(attachment)
       @attachments << attachment
     end
-    return self
+    self
   end
 
   def ==(other)
@@ -36,8 +36,8 @@ class POI
     @name.hash + @geo_coord.hash + @attachments.hash
   end
 
-  def to_s()
-    return "POI(#@name,#@geo_coord,\{#{@attachments.sort().join(",")}\}"
+  def to_s
+    "POI(#{@name},#{@geo_coord},\{#{@attachments.sort.join(',')}\}"
   end
 
 end
@@ -68,7 +68,7 @@ class Geokoordinate
   end
 
   def to_s
-    return "(#@bg,#@lg)"
+    "(#{@bg},#{@lg})"
   end
 
 end
@@ -98,8 +98,8 @@ class Attachment
     @name.hash + @inhalt.hash
   end
 
-  def to_s()
-    "At[#@name,#@inhalt]"
+  def to_s
+    "At[#{@name},#{@inhalt}]"
   end
 
 end
