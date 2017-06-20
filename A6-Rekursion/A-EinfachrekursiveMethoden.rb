@@ -1,36 +1,31 @@
 def geo_reihe(x, n)
   # make sure x, n are valid
-  unless x.is_a?(Numeric) && n.is_a?(Integer)
-    raise ArgumentError, 'Die Parameter sind vom falschem Typ'
-  end
-
-  if x.abs >= 1 || n < 0
-    raise ArgumentError, 'Die Parameter liegen nicht im zulässigen Wertebereich'
-  end
-
-  return 1 if n == 0              # terminate recursion
-  geo_reihe(x, n - 1) + x ** n    # do recursion
+  raise ArgumentError, 'Die Parameter sind vom falschem Typ' unless x.is_a?(Numeric) && n.is_a?(Integer)
+  raise ArgumentError, 'Die Parameter liegen nicht im zulässigen Wertebereich' if x.abs >= 1 || n < 0
+  
+  return 1 if n == 0              # base case 
+  geo_reihe(x, n - 1) + x ** n    # general case
 end
 
 def reverse_rek(ary)
-  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a?(Array)
+  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
   
-  return ary if ary.size == 1               # terminate recursion  
-  reverse_rek(ary.drop(1)) + ary.first(1)   # do recusion      
+  return ary if ary.size == 1               # base case  
+  reverse_rek(ary.drop(1)) + ary.first(1)   # general case      
 end
 
 def deep_reverse(ary)
-  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a?(Array)
+  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
    
   result = []
   ary.each { |elem|
-    if elem.is_a?(Array) 
+    if elem.is_a? Array  
       result << deep_reverse(elem)
     else 
       result << elem
     end
   }
-  return result.reverse
+  result.reverse
 end
 
 puts geo_reihe(0.6,8)

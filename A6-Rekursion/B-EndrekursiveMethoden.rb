@@ -1,22 +1,17 @@
 def geo_reihe(x, n, accu = 1)
   # make sure x, n are valid
-  unless (x.is_a? Numeric) && (n.is_a? Integer)
-    raise ArgumentError, 'Die Parameter sind vom falschem Typ'
-  end
+  raise ArgumentError, 'Die Parameter sind vom falschem Typ' unless x.is_a?(Numeric) && n.is_a?(Integer)
+  raise ArgumentError, 'Die Parameter liegen nicht im zulässigen Wertebereich' if x.abs >= 1 || n < 0
 
-  if x.abs >= 1 || n < 0
-    raise ArgumentError, 'Die Parameter liegen nicht im zulässigen Wertebereich'
-  end
-
-  return accu if n == 0                  # terminate recursion
-  geo_reihe(x, n - 1, accu + x ** n)     # do recursion
+  return accu if n == 0                  # base case
+  geo_reihe(x, n - 1, accu + x ** n)     # general case
 end
 
 def reverse_rek(ary, accu = [])
   raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
   
-  return accu if ary.empty?                         # terminate recursion  
-  reverse_rek(ary.drop(1), ary.first(1) + accu)     # do recusion      
+  return accu if ary.empty?                         # base case   
+  reverse_rek(ary.drop(1), ary.first(1) + accu)     # general case      
 end
 
 puts geo_reihe(0.6,8)
