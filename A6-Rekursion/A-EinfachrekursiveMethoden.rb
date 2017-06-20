@@ -31,8 +31,8 @@ end
 puts geo_reihe(0.6,8)
 
 ary = [1,[1,22,[5,7,0],8],2,3]
-print "#{reverse_rek(ary)} \n"          # [3, 2, [1, 22, [5, 7, 0], 8], 1]
-print "#{deep_reverse(ary)} \n"          # [3, 2, [8, [0, 7, 5], 22, 1], 1]
+puts "#{reverse_rek(ary)}"            # [3, 2, [1, 22, [5, 7, 0], 8], 1]
+puts "#{deep_reverse(ary)}"           # [3, 2, [8, [0, 7, 5], 22, 1], 1]
 
 #my_ary = [1, 2, 3, 4]
 #my_ary.drop(1)

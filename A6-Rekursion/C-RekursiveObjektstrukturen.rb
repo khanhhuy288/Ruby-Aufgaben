@@ -19,12 +19,8 @@ def deep_collect_keys(a_hash)
   result = Set.new
   a_hash.each { |k, v|
     result << k
-    if k.is_a? Hash
-      result.merge(deep_collect_keys(k))
-    end
-    if v.is_a? Hash
-      result.merge(deep_collect_keys(v))
-    end
+    result.merge(deep_collect_keys(k)) if k.is_a? Hash
+    result.merge(deep_collect_keys(v)) if v.is_a? Hash
   }
   result
 end
@@ -60,30 +56,30 @@ def deep_ary_plus_depth(ary, depth = 0)
 end
 
 def deep_to_string(ary)
-  result = []
-  ary.each { |elem| 
-    if elem.is_a? Array
-      deep_to_string(ary)
-    else
-      result << elem.to_s
-    end
-  }
-  return result.to_s
+  # base case 
+  return ary.to_s if  !ary.is_a? Array
+  
+  # general case 
+  '[' + ary.map { |elem| deep_to_string(elem) }.join(', ') + ']'
 end
 
+
+puts 'deep_collect_keys(a_hash)'
 h = {{2=>4} => {4 => {{5 => {1 => 3, 2=> 4}} => {7 => 8}}}}
+puts "#{deep_collect_keys(h)}"                # {{2=>4},2,4,{5=>{1=>3, 2=>4}},5,1,7}
 
-deep_collect_keys(h)       # {{2=>4},2,4,{5=>{1=>3, 2=>4}},5,1,7}
 
-deep_to_a(h)            # [[[[2, 4]], [[4, [[[[5, [[1, 3], [2, 4]]]], [[7, 8]]]]]]]]
-deep_to_a({1=>2, 2=>3})             # [[1, 2], [2, 3]]
-deep_to_a({1=>2, 2=>3, {3=>4, 5=>6}=>7})  # [[1, 2], [2, 3], [[[3, 4], [5, 6]], 7]]
-deep_to_a({{5=>{1=>3, 2=>4}}=>{7=>8}})    # [[[[5, [[1, 3], [2, 4]]]], [[7, 8]]]]
-deep_to_a({5=>{1=>3, 2=>4}})              # [[5, [[1, 3], [2, 4]]]]
+puts 'deep_to_a(a_hash)'
+puts "#{deep_to_a(h)}"            # [[[[2, 4]], [[4, [[[[5, [[1, 3], [2, 4]]]], [[7, 8]]]]]]]]
+puts "#{deep_to_a({1=>2, 2=>3})}"                   # [[1, 2], [2, 3]]
+puts "#{deep_to_a({1=>2, 2=>3, {3=>4, 5=>6}=>7})}"  # [[1, 2], [2, 3], [[[3, 4], [5, 6]], 7]]
+puts "#{deep_to_a({{5=>{1=>3, 2=>4}}=>{7=>8}})}"    # [[[[5, [[1, 3], [2, 4]]]], [[7, 8]]]]
+puts "#{deep_to_a({5=>{1=>3, 2=>4}})}"              # [[5, [[1, 3], [2, 4]]]]
 
+
+puts 'deep_ary_plus_depth(ary, depth = 0)'
 ary = [1,[9,22,[5,7,0],8],2,[11,[[[44]]],0],3]
-
-deep_ary_plus_depth(ary)
+puts "#{deep_ary_plus_depth(ary)}"
 # [ 0, [1, [9, 22, [5, 7, 0], 8], 2, [11, [[[44]]], 0], 3],
 #   1, [9, 22, [5, 7, 0], 8],
 #   2, [5, 7, 0],
@@ -92,6 +88,8 @@ deep_ary_plus_depth(ary)
 #   3, [[44]],
 #   4, [44] ]
 
+
+puts 'deep_to_string(ary)'
 class Kreis
   def initialize(x, y, radius)
     @x = x
@@ -105,8 +103,6 @@ class Kreis
 end
 
 ary3 = [[[1,2,3, Kreis.new(1,2,4)]],[4,5,6,7], Kreis.new(1,2,33),2,3,8 ]
+puts "#{deep_to_string(ary3)}"    # [[[1,2,3,K[mp=(1,2),r=4]]],[4,5,6,7],K[mp=(1,2),r=33],2,3,8]
 
-# print deep_to_string(ary3) # [[[1,2,3,K[mp=(1,2),r=4]]],[4,5,6,7],K[mp=(1,2),r=33],2,3,8]
-
-print ary3
 
