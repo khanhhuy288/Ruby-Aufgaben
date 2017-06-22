@@ -57,7 +57,7 @@ end
 
 def deep_to_string(ary)
   # base case 
-  return ary.to_s if  !ary.is_a? Array
+  return ary.to_s unless ary.is_a? Array
   
   # general case 
   '[' + ary.map { |elem| deep_to_string(elem) }.join(', ') + ']'
