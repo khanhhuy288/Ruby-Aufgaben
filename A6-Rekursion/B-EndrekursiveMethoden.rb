@@ -11,7 +11,7 @@ def reverse_rek(ary, accu = [])
   raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
   
   return accu if ary.empty?                         # base case   
-  reverse_rek(ary.drop(1), ary.first(1) + accu)     # general case      
+  reverse_rek(ary[0...(ary.size()-1)], accu.push(ary[-1]))     # general case      
 end
 
 puts geo_reihe(0.6,8)
