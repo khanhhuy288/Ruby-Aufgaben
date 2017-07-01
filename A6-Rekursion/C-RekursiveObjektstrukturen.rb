@@ -26,30 +26,34 @@ def deep_collect_keys(a_hash)
 end
 
 def deep_to_a(a_hash)
-  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless a_hash.is_a?(Hash) || a_hash.is_a?(Numeric)
+  raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless a_hash.is_a?(Hash) # || a_hash.is_a?(Numeric)
+  deep_to_a_intern(a_hash)
+end
 
+def deep_to_a_intern(a_hash)
   # base case
   return a_hash unless a_hash.is_a? Hash
 
   # general case
   a_hash.map { |k, v|
-    [deep_to_a(k), deep_to_a(v)]
+    [deep_to_a_intern(k), deep_to_a_intern(v)]
   }
 end
 
 def deep_ary_plus_depth(ary, depth = 0)
   raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
-  result = []
+  
     
   # add the biggest array and its depth = 0 
-  result << depth << ary if depth == 0 
+  #result << depth << ary if depth == 0 
 
+  result = [depth,ary]
   ary.each { |elem|
     if elem.is_a? Array
-      depth += 1
-      result << depth << elem
-      result += deep_ary_plus_depth(elem, depth)
-      depth -= 1
+      #depth += 1
+      #result << depth+1 << elem
+      result += deep_ary_plus_depth(elem, depth+1)
+      #depth -= 1
     end
   }
   result
@@ -57,7 +61,7 @@ end
 
 def deep_to_string(ary)
   # base case 
-  return ary.to_s unless ary.is_a? Array
+  return ary unless ary.is_a? Array
   
   # general case 
   '[' + ary.map { |elem| deep_to_string(elem) }.join(', ') + ']'

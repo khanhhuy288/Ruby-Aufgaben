@@ -47,7 +47,6 @@ class RekursiverBaum
   def baum_1(n,winkel,laenge,breite = BAUM1_BREITE)
     # Abbruchbedingung
     if n == 0
-      @turtle.go_ahead(laenge)
       return
     end
     
@@ -70,7 +69,6 @@ class RekursiverBaum
   def baum_2(n,winkel,laenge, breite = BAUM2_BREITE)
     # Abbruchbedingung
     if n == 0
-      @turtle.go_ahead(laenge)
       return
     end
     
@@ -92,7 +90,6 @@ class RekursiverBaum
   def baum_3(n,winkel,laenge,breite = BAUM3_BREITE)
     # Abbruchbedingung
     if n == 0
-      @turtle.go_ahead(laenge)
       return
     end
     

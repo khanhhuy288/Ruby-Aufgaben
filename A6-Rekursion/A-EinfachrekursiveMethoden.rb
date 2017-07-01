@@ -11,7 +11,7 @@ def reverse_rek(ary)
   raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
   
   return ary if ary.size == 1               # base case  
-  reverse_rek(ary.drop(1)) + ary.first(1)   # general case      
+  reverse_rek(ary.drop(1)) << ary[0]   # general case      
 end
 
 def deep_reverse(ary)
