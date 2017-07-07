@@ -42,10 +42,6 @@ end
 
 def deep_ary_plus_depth(ary, depth = 0)
   raise ArgumentError, 'Der Parameter ist vom falschem Typ' unless ary.is_a? Array
-  
-    
-  # add the biggest array and its depth = 0 
-  #result << depth << ary if depth == 0 
 
   result = [depth,ary]
   ary.each { |elem|
