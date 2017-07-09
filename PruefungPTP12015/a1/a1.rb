@@ -21,7 +21,7 @@ def f_rek (a, x, n, accu = 1)
   # base case
   return accu if n == 0
   # general case
-  return f_rek(a, x, n - 1, accu += Math.log(a)**n/fak(n) * x**n)
+  return f_rek(a, x, n - 1, accu + Math.log(a)**n/fak(n) * x**n)
 end
 
 # Vorgegeben
@@ -45,7 +45,7 @@ def n_fuer_eps (a, x, eps)
       n += 1
     end
   end
-  return n - 1 # ?
+  return n - 1
 end
 
 # max_with_size  10 Pkt
@@ -55,13 +55,13 @@ class Array
     @@max = []
     max_with_size_intern(self)
   end
-   
+  
+  private 
   def max_with_size_intern(ary)
     @@max = [ary.size, ary] if @@max.empty? || ary.size > @@max[0]
   
     ary.each { |elem|
-      next unless elem.is_a? Array 
-      max_with_size_intern(elem)
+      max_with_size_intern(elem) if elem.is_a? Array 
     }
     @@max
   end
@@ -74,6 +74,7 @@ class Hash
     deep_to_a_intern(self)
   end
 
+  private
   def deep_to_a_intern(a_hash)
     # base case
     return a_hash if !a_hash.is_a? Hash

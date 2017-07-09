@@ -17,14 +17,14 @@ class Raum
     return false if other.nil?
     return true if self.equal?(other)
     return false if self.class != other.class
-    [@gegenstaende] == [other.gegenstaende]
+    @gegenstaende == other.gegenstaende
   end
 
   def eql?(other)
     return false if other.nil?
     return true if self.equal?(other)
     return false if self.class != other.class
-    [@gegenstaende].eql?([other.gegenstaende])
+    @gegenstaende.eql?(other.gegenstaende)
   end
 
   def hash
@@ -88,7 +88,11 @@ end
 #g2 = Gegenstand.new(2,2)
 #g3 = Gegenstand.new(1,4)
 #g4 = Gegenstand.new(1,3)
+#g5 = Gegenstand.new(7,2)
+#g6 = Gegenstand.new(2,5)
 #r1 = Raum.new([g1, g2, g3, g4])
-#puts r1
-#print [g1, g2, g3, g4].sort
+#r2 = Raum.new([g5, g6])
+#puts [g5, g6]
+#puts [g1, g2, g3, g4].sort
+#puts [r2, r1, r2, r2, r1].sort
 
