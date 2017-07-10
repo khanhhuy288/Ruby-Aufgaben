@@ -30,6 +30,7 @@ class Array
   def deep_group_by_class
     @@result = {}
     deep_group_by_class_intern(self)
+    @@result
   end
 
   private
@@ -42,7 +43,7 @@ class Array
 
       deep_group_by_class_intern(elem) if elem.is_a?(Array)
     }
-    @@result
+    
   end
 end
 

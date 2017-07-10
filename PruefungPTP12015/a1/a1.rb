@@ -54,6 +54,7 @@ class Array
   def max_with_size
     @@max = []
     max_with_size_intern(self)
+    @@max
   end
   
   private 
@@ -63,7 +64,6 @@ class Array
     ary.each { |elem|
       max_with_size_intern(elem) if elem.is_a? Array 
     }
-    @@max
   end
 end
 

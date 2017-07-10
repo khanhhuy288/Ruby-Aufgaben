@@ -4,7 +4,7 @@
 # Näherung von ln(x) berechnen für x > 0.5
 def sum(x,n)
   #TODO
-  raise ArgumentError, 'Ungültige Werte' if !x.is_a?(Numeric) || !n.is_a?(Integer) || x <= 0.5 || n < 1
+  raise ArgumentError if !x.is_a?(Numeric) || !n.is_a?(Integer) || x <= 0.5 || n < 1
 
   result = 0
 
@@ -47,7 +47,7 @@ def max_bestellwert(ein_hash)
   #TODO
   result = {}
   ein_hash.each { |key, val|
-    result[key] = val.inject(0) { |sum, v| sum + v}
+    result[key] = val.inject(0) { |sum, v| sum + v }
   }
   result.max { |a, b| a[1] <=> b[1] }[0]
 end
