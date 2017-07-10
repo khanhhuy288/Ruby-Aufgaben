@@ -8,10 +8,10 @@ class Kasse
   attr_writer :rechnungen
   protected :rechnungen
   # TODO 's nach Aufgabenstellung
-  def initialize 
+  def initialize
     @rechnungen = []
   end
-  
+
   def == other
     return false if other.nil?
     return true if self.equal?(other)
@@ -26,10 +26,10 @@ class Kasse
     rechnungen.eql?(rechnungen)
   end
 
-  def hash 
+  def hash
     @rechnungen.hash
   end
-  
+
   # Gegeben
   def <<(rechnung)
     @rechnungen << rechnung
@@ -43,9 +43,9 @@ class Kasse
   def to_s()
     return "Kasse:\n #{@rechnungen.join("\n ")}}"
   end
-  
-  def clone 
-    copy = super 
+
+  def clone
+    copy = super
     copy.rechnungen = @rechnungen.map { |rechnung| rechnung.clone }
     copy
   end
@@ -61,7 +61,7 @@ class Rechnung
     @nr = nr
     @positionen = []
   end
-  
+
   def == other
     return false if other.nil?
     return true if self.equal?(other)
@@ -76,7 +76,7 @@ class Rechnung
     [@nr, @positionen].eql?([other.nr, other.positionen])
   end
 
-  def hash 
+  def hash
     @nr.hash + @positionen.hash
   end
 
@@ -92,9 +92,9 @@ class Rechnung
     end
     return "R#{@nr}:#{@positionen.join(",")}"
   end
-  
-  def clone 
-    copy = super 
+
+  def clone
+    copy = super
     copy.positionen = @positionen.map { |position| position.clone }
     copy
   end
@@ -104,6 +104,8 @@ end
 class Position
 
   attr_reader :preis
+  attr_writer :produkt
+
   # Gegeben
   def produkt
     @produkt.clone()
@@ -129,17 +131,18 @@ class Position
     [@produkt, @preis].eql?([other.produkt, other.preis])
   end
 
-  def hash 
+  def hash
     @produkt.hash + @preis.hash
   end
-  
+
   def to_s()
     return "#{@produkt}:#{preis}"
   end
+
+  def clone
+    copy = super 
+    copy.produkt = produkt
+    copy
+  end
 end
-
-
-
-
-
 
